@@ -21,3 +21,4 @@ https://cs.lmu.edu/~ray/notes/nasmtutorial/
 
 https://stackoverflow.com/questions/4175281/what-does-it-mean-to-align-the-stack
 https://en.wikibooks.org/wiki/X86_Assembly/Print_Version
+-[crash course](https://www.youtube.com/watch?v=75gBFiFtAb8)
