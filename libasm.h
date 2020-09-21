@@ -13,10 +13,14 @@
 #ifndef LIBASM_H
 # define LIBASM_H
 
-// # define [0;31m RED
-// # define [0;33m YELLOW
-// # define [0;34m BLUE
-
+// #define KNRM  "\x1B[0m"
+// #define KRED  "\033[31m"
+// #define KGRN  "\x1B[32m"
+// #define KYEL  "\x1B[33m"
+// #define KBLU  "\x1B[34m"
+// #define KMAG  "\x1B[35m"
+// #define KCYN  "\x1B[36m"
+// #define KWHT  "\x1B[37m"
 
 #include <string.h>
 #include <unistd.h>
