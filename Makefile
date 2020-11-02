@@ -12,42 +12,40 @@
 
 NAME = libasm.a
 
-NASM = nasm
-
-NASM_FLAGS = -f macho64
+NASM = nasm -f macho64
 
 CC = gcc
 
-CC_FLAGS =  -Wall -Wextra -Werror
+FLAGS = -Wall -Werror -Wextra
 
-SRC = ft_strlen.s
+SRC = ft_strlen.s ft_strcpy.s
 
-CC_SRC = main.c
-#ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s ft_strdup.s
+MAIN = main.c
+
+TEST = test
+# ft_strcmp.s ft_write.s ft_read.s ft_strdup.s
 
 OBJECTS = $(SRC:.s=.o)
-
-CC_OBJECTS = $(CC_SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	@ar rc $(NAME) $(OBJECTS)
-	@ranlib $(NAME)
+	@ar rc $@ $^
+	@ranlib $@
 	@echo "nasm library creation successful"
 
-test: $(NAME) $(CC_OBJECTS)
-	@$(CC) $(CC_FLAGS)
-
 %.o: %.s
-	$(NA) $(NA_FLAGS) $< 
+	@$(NASM) $<
+
+test: $(MAIN) $(NAME)
+	@$(CC) $(FLAGS) -L. -lasm -o $(TEST) $(MAIN)
 
 clean:
-	@rm -f $(OBJECTS) $(CC_OBJECTS)
+	@rm -f $(OBJECTS)
 	@echo "Objects file were removed - clean."
 
 fclean: clean
-	@rm -f $(NAME)
+	@rm -f $(NAME) $(TEST)
 	@echo "Objects file were removed - fclean."
 
 re: fclean all

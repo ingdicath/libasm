@@ -1,14 +1,17 @@
+; computes the length of the string
 
-section 	.text
+section .text
 
-	global 	_ft_strlen
+global 	_ft_strlen
 
-	_ft_strlen:
-			mov rax, -1
-			jump loop
+_ft_strlen:
+	mov rax, 0					; i = 0
 
-	loop:
-			cmp [rdi + rax], 0
-			inc rax
-	end:
-			ret
+loop:
+	cmp byte [rdi + rax], 0
+	je theend 					; jump if is equal to '0'
+	inc rax
+	jmp loop
+
+theend:
+	ret

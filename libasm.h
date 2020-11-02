@@ -13,21 +13,14 @@
 #ifndef LIBASM_H
 # define LIBASM_H
 
-// #define KNRM  "\x1B[0m"
-// #define KRED  "\033[31m"
-// #define KGRN  "\x1B[32m"
-// #define KYEL  "\x1B[33m"
-// #define KBLU  "\x1B[34m"
-// #define KMAG  "\x1B[35m"
-// #define KCYN  "\x1B[36m"
-// #define KWHT  "\x1B[37m"
-
-#include <string.h>
-#include <unistd.h>
-#include <stdio.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <unistd.h>
+# include <errno.h>
 
 size_t	ft_strlen(const char *s);
-char	*ft_strcpy(char * dst, const char * src);
+char	*ft_strcpy(char *dst, const char *src);
 int		ft_strcmp(const char *s1, const char *s2);
 ssize_t	ft_write(int fildes, const void *buf, size_t nbyte);
 ssize_t	ft_read(int fildes, void *buf, size_t nbyte);
