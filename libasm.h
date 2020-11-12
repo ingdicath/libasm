@@ -6,7 +6,7 @@
 /*   By: dsalaman <dsalaman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/09/16 14:23:38 by dsalaman      #+#    #+#                 */
-/*   Updated: 2020/09/16 14:27:38 by dsalaman      ########   odam.nl         */
+/*   Updated: 2020/11/11 17:29:12 by dsalaman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@
 # include <string.h>
 # include <unistd.h>
 # include <errno.h>
+
+# define CYAN "\033[38;5;81m"
+# define GREEN "\033[38;5;10m"
+# define RED "\033[38;5;160m"
+# define BLUE "\033[38;5;21m"
+# define PURPLE "\033[38;5;99m"
+# define ORANGE " \033[38;5;172m"
+# define WHITE "\033[0m"
 
 size_t	ft_strlen(const char *s);
 char	*ft_strcpy(char *dst, const char *src);

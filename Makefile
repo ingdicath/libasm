@@ -6,7 +6,7 @@
 #    By: dsalaman <dsalaman@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/09/15 09:06:25 by dsalaman      #+#    #+#                  #
-#    Updated: 2020/09/15 09:06:35 by dsalaman      ########   odam.nl          #
+#    Updated: 2020/11/12 00:47:11 by dsalaman      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,12 +18,12 @@ CC = gcc
 
 FLAGS = -Wall -Werror -Wextra
 
-SRC = ft_strlen.s ft_strcpy.s
+SRC = ft_strlen.s ft_strcpy.s ft_strcmp.s
 
 MAIN = main.c
 
 TEST = test
-# ft_strcmp.s ft_write.s ft_read.s ft_strdup.s
+# ft_write.s ft_read.s ft_strdup.s
 
 OBJECTS = $(SRC:.s=.o)
 

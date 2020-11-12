@@ -1,7 +1,20 @@
-; computes the length of the string
+; **************************************************************************** ;
+;                                                                              ;
+;                                                         ::::::::             ;
+;    ft_strlen.s                                        :+:    :+:             ;
+;                                                      +:+                     ;
+;    By: dsalaman <dsalaman@student.codam.nl>         +#+                      ;
+;                                                    +#+                       ;
+;    Created: 2020/11/06 15:39:30 by dsalaman      #+#    #+#                  ;
+;    Updated: 2020/11/11 14:22:17 by dsalaman      ########   odam.nl          ;
+;                                                                              ;
+; **************************************************************************** ;
+
+; Description: computes the length of the string
+; Synopsis: size_t strlen(const char *s)
+; Return: size_t
 
 section .text
-
 global 	_ft_strlen
 
 _ft_strlen:
@@ -9,9 +22,9 @@ _ft_strlen:
 
 loop:
 	cmp byte [rdi + rax], 0
-	je theend 					; jump if is equal to '0'
-	inc rax
+	je end 					; jump if is equal to '0'
+	inc rax					; i++
 	jmp loop
 
-theend:
+end:
 	ret
