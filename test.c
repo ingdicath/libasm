@@ -6,24 +6,46 @@
 /*   By: dsalaman <dsalaman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 13:12:28 by dsalaman      #+#    #+#                 */
-/*   Updated: 2020/11/12 13:13:01 by dsalaman      ########   odam.nl         */
+/*   Updated: 2020/11/12 13:30:07 by dsalaman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libasm.h"
 
-void	strlen_test(void)
+void	strlen_test(char *str)
 {
 	int		my_len;
 	int		real_len;
-	char	str1[] = "45645646546540";
-	char	str2[] = " ";
-	char	str3[] = "01001abcd\t\t\0123";
-	char	str4[] = "Boston marathon";
-	char	str5[] = "\0";
-	char	str6[] = "";
-	char	str7[] = "01";
-	char	str8[] = "01\0buenaaassssss0";
+
+	my_len = ft_strlen(str);
+	real_len = strlen(str);
+	if (*str == '\0')
+		printf("String -> \\0")
+	else
+		printf("String %s, strlen: |%d|\nft_strlen: |%d|\n\n", str, real_len, my_len);
+}
+
+void run_strlen_test(void)
+{
+	char *str1;
+	char *str2;
+	char *str3;
+	char *str4;
+	char *str5;
+	char *str6;
+	char *str7;
+	char *str8;
+
+	str1 = "45645646546540";
+	str2 = " ";
+	str3 = "01001abcd\t\t\0123";
+	str4 = "Boston marathon";
+	str5 = "\0";
+	str6 = "";
+	str7 = "01";
+	str8 = "01\0buenaaassssss0";
+
+	strlen_test(str1);
 	
 	printf("" ORANGE "\n%-12s :  " WHITE "\n", "ft_strlen.s");
 	printf("" ORANGE "\n************ FT_STRLEN **********" WHITE "\n");
@@ -75,6 +97,14 @@ void	strlen_test(void)
 	else
 		printf("ERROR: check function ft_strlen again\n\n");
 }
+
+
+}
+
+
+
+
+	
 
 /* function copy the string src to dst */
 

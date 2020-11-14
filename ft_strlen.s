@@ -6,7 +6,7 @@
 ;    By: dsalaman <dsalaman@student.codam.nl>         +#+                      ;
 ;                                                    +#+                       ;
 ;    Created: 2020/11/06 15:39:30 by dsalaman      #+#    #+#                  ;
-;    Updated: 2020/11/11 14:22:17 by dsalaman      ########   odam.nl          ;
+;    Updated: 2020/11/14 19:20:11 by dsalaman      ########   odam.nl          ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
@@ -15,7 +15,7 @@
 ; Return: size_t
 
 section .text
-global 	_ft_strlen
+	global _ft_strlen
 
 _ft_strlen:
 	mov rax, 0					; i = 0

@@ -16,7 +16,7 @@
 ; movsx dst,org (Move with Sign Extension)
 
 section .text
-global _ft_strcmp
+	global _ft_strcmp
 
 _ft_strcmp:
 	mov rdx, 0 					; i = 0
