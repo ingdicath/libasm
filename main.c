@@ -1,25 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   main.c                                             :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: dsalaman <dsalaman@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/11/17 18:43:57 by dsalaman      #+#    #+#                 */
+/*   Updated: 2020/11/18 13:41:01 by dsalaman      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libasm.h"
 
+/*
+**	---------------------------------------------------------------------------
+**									FT_STRLEN
+**	---------------------------------------------------------------------------
+*/
+
 void	strlen_test(char *str)
 {
-	int		real_len;
-	int		my_len;
-	
-	real_len = strlen(str);
-	my_len = ft_strlen(str);
+	int		real;
+	int		own;
 
+	real = strlen(str);
+	own = ft_strlen(str);
 	if (*str == '\0')
-		printf("String is: \t|'\\0'|\nstrlen: \t|%d|\nft_strlen: \t|%d|\n\n", real_len, my_len);
+		printf("String is: \t|'\\0'|\nstrlen: \t|%d|\nft_strlen: \t|%d|\n\n", real, own);
 	else
-		printf("String is: \t|%s|\nstrlen: \t|%d|\nft_strlen: \t|%d|\n\n", str, real_len, my_len);
-	if (real_len == my_len)
+		printf("String is: \t|%s|\nstrlen: \t|%d|\nft_strlen: \t|%d|\n\n", str, real, own);
+	if (real == own)
 			printf("" GREEN "Function ft_strlen is OK" RESET "\n\n");
 	else
 		printf("" RED "ERROR: check function ft_strlen again" RESET "\n\n");
 }
 
-void run_strlen_test(void)
+void	run_strlen_test(void)
 {
 	char *str1;
 	char *str2;
@@ -38,7 +54,6 @@ void run_strlen_test(void)
 	str6 = "";
 	str7 = "01";
 	str8 = "01\0buenaaassssss0";
-
 	printf("" ORANGE "\n************ FT_STRLEN **********" RESET "\n\n");
 	printf("" CYAN "--------- Test 1 --------" RESET "\n");
 	strlen_test(str1);
@@ -58,7 +73,13 @@ void run_strlen_test(void)
 	strlen_test(str8);
 }
 
-void strcpy_test(char *str)
+/*
+**	---------------------------------------------------------------------------
+**									FT_STRCPY
+**	---------------------------------------------------------------------------
+*/
+
+void	strcpy_test(char *str)
 {
 	char *real_str;
 	char *my_str;
@@ -69,20 +90,19 @@ void strcpy_test(char *str)
 	bzero(dst2, 200);
 	real_str = strcpy(dst1, str);
 	my_str = ft_strcpy(dst2, str);
-
 	if (*str == '\0')
 		printf("Src string is: \t|\\0|\nstrcpy: \t|%s|\nft_strcpy: \t|%s|\n\n", real_str, my_str);
-	else if(*str == '\n')
+	else if (*str == '\n')
 		printf("Src string is: \t|\\n|\nstrcpy: \t|%s|\nft_strcpy: \t|%s|\n\n", real_str, my_str);
 	else
-		printf("Src string is: \t|%s|\nstrcpy: \t|%s|\nft_strcpy: \t|%s|\n\n",str, real_str, my_str);
-	if (strcmp(real_str,my_str) == 0)
-			printf("" GREEN "Function ft_strcpy is OK" RESET "\n\n");
+		printf ("Src string is: \t|%s|\nstrcpy: \t|%s|\nft_strcpy: \t|%s|\n\n",str, real_str, my_str);
+	if (strcmp(real_str, my_str) == 0)
+		printf("" GREEN "Function ft_strcpy is OK" RESET "\n\n");
 	else
 		printf("" RED "ERROR: check function ft_strcpy again" RESET "\n\n");
 }
 
-void run_strcpy_test(void)
+void	run_strcpy_test(void)
 {
 	char *str1;
 	char *str2;
@@ -101,7 +121,6 @@ void run_strcpy_test(void)
 	str6 = "";
 	str7 = "0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefA";
 	str8 = "01\0buenaaassssss0";
-
 	printf("" PURPLE "\n************ FT_STRCPY **********" RESET "\n\n");
 	printf("" CYAN "--------- Test 1 --------" RESET "\n");
 	strcpy_test(str1);
@@ -121,7 +140,13 @@ void run_strcpy_test(void)
 	strcpy_test(str8);
 }
 
-void strcmp_test(char *str1, char *str2)
+/*
+**	---------------------------------------------------------------------------
+**									FT_STRCMP
+**	---------------------------------------------------------------------------
+*/
+
+void	strcmp_test(char *str1, char *str2)
 {
 	int		real_cmp;
 	int		my_cmp;
@@ -162,7 +187,6 @@ void run_strcmp_test(void)
 	str8 = "";
 	str9 = "Hola pirinola\0buenaaassssss0";
 	str10 = "Hola pirinola";
-
 	printf("" PINK "\n************ FT_STRCMP **********" RESET "\n\n");
 	printf("" CYAN "--------- Test 1 --------" RESET "\n");
 	strcmp_test(str1, str2);
@@ -180,36 +204,42 @@ void run_strcmp_test(void)
 	strcmp_test(str10, str7);
 }
 
-void write_test(int fd, char *str, int len)
+/*
+**	---------------------------------------------------------------------------
+**									FT_WRITE
+**	---------------------------------------------------------------------------
+*/
+
+void	write_test(int fd, char *str, int len)
 {
-	int real_write;
-	int my_write;
+	int real;
+	int own;
 	int	error1;
 	int error2;
 
-	real_write = write(fd, str, len);
+	real = write(fd, str, len);
 	error1 = errno;
-	write(fd, "\n", 1);
-	my_write = ft_write(fd, str, len);
+	printf("\n");
+	own = ft_write(fd, str, len);
 	error2 = errno;
-	ft_write(fd, "\n", 1);
+	printf("\n\n");
 	if (*str == '\0')
 	{
-		printf("String is: \t|'\\0'|\nwrite: \t\t|%d|\nft_write: \t|%d|\n\n", real_write, my_write);
+		printf("String is: \t|'\\0'|\nwrite: \t\t|%d|\nft_write: \t|%d|\n\n", real, own);
 		printf("Errno is: \nwrite: \t\t|%d|\nft_write: \t|%d|\n\n", error1, error2);
 	}
 	else
 	{
-		printf("String is: \t|%s|\nwrite: \t\t|%d|\nft_write: \t|%d|\n\n", str, real_write, my_write);
+		printf("String is: \t|%s|\nwrite: \t\t|%d|\nft_write: \t|%d|\n\n", str, real, own);
 		printf("Errno is: \nwrite: \t\t|%d|\nft_write: \t|%d|\n\n", error1, error2);
 	}
-	if (real_write == my_write)
+	if (real == own)
 		printf("" GREEN "Function ft_write is OK" RESET "\n\n");
 	else
 		printf("" RED "ERROR: check function ft_write again" RESET "\n\n");
 }
 
-int run_write_test(void)
+int	run_write_test(void)
 {
 	int fd;
 	char *str1;
@@ -250,18 +280,176 @@ int run_write_test(void)
 	return(0);
 }
 
-int main(void)
+/*
+**	---------------------------------------------------------------------------
+**									FT_READ
+**	---------------------------------------------------------------------------
+*/
+
+/*void read_test(char *str, size_t len)
 {
-	// run_strlen_test();
-	// run_strcpy_test();
-	// run_strcmp_test();
+	int fd;
+	int real;
+	int own;
+	int error1;
+	int error2;
+	char buf1[200];
+	char buf2[200];
+
+	bzero(buf1, sizeof(buf1));
+	bzero(buf2, sizeof(buf2));
+	fd = open(fd, O_RDONLY);
+	if (fd < 0)
+		return (-1);
+	real = read(fd, buf1, len);
+	error1 = errno;
+	own = ft_read(fd, buf2, len);
+	error2 = errno;
+	if (*buf1 == '\0')
+	{
+		printf("String is: \t|'\\0'|\nread: \t\t|%d|\nft_read: \t|%d|\n\n", real, own);
+		printf("Errno is: \nread: \t\t|%d|\nft_read: \t|%d|\n\n", error1, error2);
+	}
+	else
+	{
+		printf("String is: \t|%s|\nread: \t\t|%d|\nft_read: \t|%d|\n\n", buf1, real, own);
+		printf("Errno is: \nread: \t\t|%d|\nft_read: \t|%d|\n\n", error1, error2);
+	}
+	if (*buf2 == '\0')
+	{
+		printf("String is: \t|'\\0'|\nread: \t\t|%d|\nft_read: \t|%d|\n\n", real, own);
+		printf("Errno is: \nread: \t\t|%d|\nft_read: \t|%d|\n\n", error1, error2);
+	}
+	else
+	{
+		printf("String is: \t|%s|\nread: \t\t|%d|\nft_read: \t|%d|\n\n", buf2, real, own);
+		printf("Errno is: \nread: \t\t|%d|\nft_read: \t|%d|\n\n", error1, error2);
+	}
+	if (real == own)
+		printf("" GREEN "Function ft_read is OK" RESET "\n\n");
+	else
+		printf("" RED "ERROR: check function ft_read again" RESET "\n\n");
+	close(fd);
+}
+
+void	run_read_test(void)
+{
+	char *str1;
+	char *str2;
+	char *str3;
+	char *str4;
+	char *str5;
+	char *str6;
+	char *str7;
+	char *str8;
+	char *str9;
+	char *str10;
+
+	str1 = "Boston marathon";
+	str2 = "Boston marathon";
+	str3 = "01001abcd\t\t\0123";
+	str4 = "01001abcd\t\t\0123";
+	str5 = "\0";
+	str6 = "\0";
+	str7 = "";
+	str8 = "";
+	str9 = "Hola pirinola\0buenaaassssss0";
+	str10 = "Hola pirinola";
+	// char buf1[200];
+	// char buf2[200];
+
+	printf("" BLUE "\n************ FT_READ **********" RESET "\n\n");
+	printf("" CYAN "--------- Test 1 --------" RESET "\n");
+	read_test(str1, strlen(str1));
+	printf("" CYAN "--------- Test 2 --------" RESET "\n");
+	read_test(str3, strlen(str3));
+	printf("" CYAN "--------- Test 3 --------" RESET "\n");
+	read_test(1, str5, strlen(str5));
+	printf("" CYAN "--------- Test 4 --------" RESET "\n");
+	read_test(50, str1, strlen(str1));
+
+}*/
+
+/*
+**	---------------------------------------------------------------------------
+**									FT_STRDUP
+**	---------------------------------------------------------------------------
+*/
+
+void	strdup_test(char *str)
+{
+	char *real_dup;
+	char *my_dup;
+	int error1;
+	int error2;
+
+	real_dup = strdup(str);
+	error1 = errno;
+	my_dup = ft_strdup(str);
+	error2 = errno;
+	if (*str == '\0')
+	{
+		printf("String is: \t|'\\0'|\nstrdup: \t|%s|\nft_strdup: \t|%s|\n\n", real_dup, my_dup);
+		printf("Errno is: \nstrdup: \t|%d|\nft_strdup: \t|%d|\n\n", error1, error2);
+	}
+	else
+	{
+		printf("String is: \t|%s|\nstrdup: \t|%s|\nft_strdup: \t|%s|\n\n", str, real_dup, my_dup);
+		printf("Errno is: \nstrdup: \t|%d|\nft_strdup: \t|%d|\n\n", error1, error2);
+	}
+	if (!strcmp(real_dup, my_dup) && (size_t)str != (size_t)my_dup && error1 == error2)
+		printf("" GREEN "Function ft_strdup is OK" RESET "\n\n");
+	else
+		printf("" RED "ERROR: check function ft_strdup again" RESET "\n\n");
+	free(real_dup);
+	free(my_dup);
+}
+
+void	run_strdup_test(void)
+{
+	char *str1;
+	char *str2;
+	char *str3;
+	char *str4;
+	char *str5;
+	char *str6;
+	char *str7;
+	char *str8;
+
+	str1 = "Boston marathon";
+	str2 = "\n";
+	str3 = "01001abcd\t\t\0123";
+	str4 = "Boston marathon";
+	str5 = "\0";
+	str6 = "";
+	str7 = "0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefA";
+	str8 = "01\0buenaaassssss0";
+	printf("" PURPLE "\n************ FT_STRDUP **********" RESET "\n\n");
+	printf("" CYAN "--------- Test 1 --------" RESET "\n");
+	strdup_test(str1);
+	printf("" CYAN "--------- Test 2 --------" RESET "\n");
+	strdup_test(str2);
+	printf("" CYAN "--------- Test 3 --------" RESET "\n");
+	strdup_test(str3);
+	printf("" CYAN "--------- Test 4 --------" RESET "\n");
+	strdup_test(str4);
+	printf("" CYAN "--------- Test 5 --------" RESET "\n");
+	strdup_test(str5);
+	printf("" CYAN "--------- Test 6 --------" RESET "\n");
+	strdup_test(str6);
+	printf("" CYAN "--------- Test 7 --------" RESET "\n");
+	strdup_test(str7);
+	printf("" CYAN "--------- Test 8 --------" RESET "\n");
+	strdup_test(str8);
+}
+
+int	main(void)
+{
+	run_strlen_test();
+	run_strcpy_test();
+	run_strcmp_test();
 	run_write_test();
 	// run_read_test();
-	// run_strdup_test();
-	// int a;
-	// char *s = "01001abcd\t\t\0123";
-	// printf("|%lu|\n", strlen(s));
-	// a = write(1, "01001abcd\t\t\0123", 13);
-	
+	run_strdup_test();
     return(0);
 }

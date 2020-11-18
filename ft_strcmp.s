@@ -6,13 +6,19 @@
 ;    By: dsalaman <dsalaman@student.codam.nl>         +#+                      ;
 ;                                                    +#+                       ;
 ;    Created: 2020/11/11 13:25:46 by dsalaman      #+#    #+#                  ;
-;    Updated: 2020/11/11 15:19:50 by dsalaman      ########   odam.nl          ;
+;    Updated: 2020/11/17 16:33:17 by dsalaman      ########   odam.nl          ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
-; Description: lexicographically compare the null-terminated strings s1(rdi) and s2(rsi) 
-; Synopsis: int strcmp(const char *s1, const char *s2)
-; Return: int, s1 - s2
+; DESCRIPTION: lexicographically compare the null-terminated strings s1(rdi) and s2(rsi)
+;
+; SYNOPSIS: int strcmp(const char *s1, const char *s2)
+;
+; RETURN: int, s1 - s2
+; return an integer greater than, equal to, or less than 0, 
+; according as the string s1 is greater than, equal to, or less than the string s2.  
+; The comparison is done using unsigned characters, so that `\200' is greater than `\0'.
+;
 ; movsx dst,org (Move with Sign Extension)
 
 section .text
@@ -32,8 +38,8 @@ loop:
 	jmp loop
 
 end:
-	sub cl, bl					; find diff, cl <- cl - bl
-	movsx rax, cl				; store diff in rax
+	sub cl, bl					; find difference, cl <- cl - bl
+	movsx rax, cl				; store difference in rax
 	ret
 
 

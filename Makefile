@@ -6,7 +6,7 @@
 #    By: dsalaman <dsalaman@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/09/15 09:06:25 by dsalaman      #+#    #+#                  #
-#    Updated: 2020/11/14 23:50:37 by dsalaman      ########   odam.nl          #
+#    Updated: 2020/11/16 20:29:39 by dsalaman      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,14 +16,13 @@ NASM = nasm -f macho64
 
 CC = gcc
 
-FLAGS = -Wall -Werror -Wextra -fsanitize=address
+FLAGS = -Wall -Werror -Wextra
 
-SRC = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s
+SRC = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s ft_strdup.s
 
 MAIN = main.c
 
 TEST = test
-# ft_read.s ft_strdup.s
 
 OBJECTS = $(SRC:.s=.o)
 
