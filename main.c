@@ -6,7 +6,7 @@
 /*   By: dsalaman <dsalaman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/17 18:43:57 by dsalaman      #+#    #+#                 */
-/*   Updated: 2020/11/18 22:50:26 by dsalaman      ########   odam.nl         */
+/*   Updated: 2020/11/19 23:11:23 by dsalaman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,40 +37,23 @@ void	strlen_test(char *str)
 
 void	run_strlen_test(void)
 {
-	char *str1;
-	char *str2;
-	char *str3;
-	char *str4;
-	char *str5;
-	char *str6;
-	char *str7;
-	char *str8;
-
-	str1 = "45645646546540";
-	str2 = " ";
-	str3 = "01001abcd\t\t\0123";
-	str4 = "Boston marathon";
-	str5 = "\0";
-	str6 = "";
-	str7 = "01";
-	str8 = "01\0buenaaassssss0";
 	printf("" ORANGE "\n************ FT_STRLEN **********" RESET "\n\n");
 	printf("" CYAN "--------- Test 1 --------" RESET "\n");
-	strlen_test(str1);
+	strlen_test("45645646546540");
 	printf("" CYAN "--------- Test 2 --------" RESET "\n");
-	strlen_test(str2);
+	strlen_test(" ");
 	printf("" CYAN "--------- Test 3 --------" RESET "\n");
-	strlen_test(str3);
+	strlen_test("01001abcd\t\t\0123");
 	printf("" CYAN "--------- Test 4 --------" RESET "\n");
-	strlen_test(str4);
+	strlen_test("Boston marathon");
 	printf("" CYAN "--------- Test 5 --------" RESET "\n");
-	strlen_test(str5);
+	strlen_test("\0");
 	printf("" CYAN "--------- Test 6 --------" RESET "\n");
-	strlen_test(str6);
+	strlen_test("");
 	printf("" CYAN "--------- Test 7 --------" RESET "\n");
-	strlen_test(str7);
+	strlen_test("01");
 	printf("" CYAN "--------- Test 8 --------" RESET "\n");
-	strlen_test(str8);
+	strlen_test("01\0buenaaassssss0");
 }
 
 /*
@@ -104,40 +87,23 @@ void	strcpy_test(char *str)
 
 void	run_strcpy_test(void)
 {
-	char *str1;
-	char *str2;
-	char *str3;
-	char *str4;
-	char *str5;
-	char *str6;
-	char *str7;
-	char *str8;
-
-	str1 = "45645646546540";
-	str2 = " ";
-	str3 = "01001abcd\t\t\0123";
-	str4 = "Boston marathon";
-	str5 = "\0";
-	str6 = "";
-	str7 = "0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefA";
-	str8 = "01\0buenaaassssss0";
 	printf("" PURPLE "\n************ FT_STRCPY **********" RESET "\n\n");
 	printf("" CYAN "--------- Test 1 --------" RESET "\n");
-	strcpy_test(str1);
+	strcpy_test("45645646546540");
 	printf("" CYAN "--------- Test 2 --------" RESET "\n");
-	strcpy_test(str2);
+	strcpy_test(" ");
 	printf("" CYAN "--------- Test 3 --------" RESET "\n");
-	strcpy_test(str3);
+	strcpy_test("01001abcd\t\t\0123");
 	printf("" CYAN "--------- Test 4 --------" RESET "\n");
-	strcpy_test(str4);
+	strcpy_test("Boston marathon");
 	printf("" CYAN "--------- Test 5 --------" RESET "\n");
-	strcpy_test(str5);
+	strcpy_test("\0");
 	printf("" CYAN "--------- Test 6 --------" RESET "\n");
-	strcpy_test(str6);
+	strcpy_test("");
 	printf("" CYAN "--------- Test 7 --------" RESET "\n");
-	strcpy_test(str7);
+	strcpy_test("0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefA");
 	printf("" CYAN "--------- Test 8 --------" RESET "\n");
-	strcpy_test(str8);
+	strcpy_test("01\0buenaaassssss0");
 }
 
 /*
@@ -166,42 +132,29 @@ void	strcmp_test(char *str1, char *str2)
 
 void run_strcmp_test(void)
 {
-	char *str1;
-	char *str2;
-	char *str3;
-	char *str4;
-	char *str5;
-	char *str6;
-	char *str7;
-	char *str8;
-	char *str9;
-	char *str10;
-
-	str1 = "Boston marathon";
-	str2 = "Boston marathon";
-	str3 = "01001abcd\t\t\0123";
-	str4 = "01001abcd\t\t\0123";
-	str5 = "\0";
-	str6 = "\0";
-	str7 = "";
-	str8 = "";
-	str9 = "Hola pirinola\0buenaaassssss0";
-	str10 = "Hola pirinola";
 	printf("" PINK "\n************ FT_STRCMP **********" RESET "\n\n");
 	printf("" CYAN "--------- Test 1 --------" RESET "\n");
-	strcmp_test(str1, str2);
+	strcmp_test("Boston marathon", "Boston marathon");
 	printf("" CYAN "--------- Test 2 --------" RESET "\n");
-	strcmp_test(str3, str3);
+	strcmp_test("01001abcd\t\t\0123", "01001abcd\t\t\0123");
 	printf("" CYAN "--------- Test 3 --------" RESET "\n");
-	strcmp_test(str5, str6);
+	strcmp_test("\0", "\0");
 	printf("" CYAN "--------- Test 4 --------" RESET "\n");
-	strcmp_test(str7, str8);
+	strcmp_test("", "");
 	printf("" CYAN "--------- Test 5 --------" RESET "\n");
-	strcmp_test(str9, str10);
+	strcmp_test("Hola pirinola\0buenaaassssss0", "Hola pirinola");
 	printf("" CYAN "--------- Test 6 --------" RESET "\n");
-	strcmp_test(str7, str10);
+	strcmp_test("", "Hola pirinola");
 	printf("" CYAN "--------- Test 7 --------" RESET "\n");
-	strcmp_test(str10, str7);
+	strcmp_test("Hola pirinola", "");
+	printf("" CYAN "--------- Test 8 --------" RESET "\n");
+	strcmp_test("\xff", "\xff\xff");
+	printf("" CYAN "--------- Test 9 --------" RESET "\n");
+	strcmp_test("\xff\xff", "\xff");
+	printf("" CYAN "--------- Test 10 --------" RESET "\n");
+	strcmp_test("\x01\x01", "\x01");
+	printf("" CYAN "--------- Test 11 --------" RESET "\n");
+	strcmp_test("\x01", "\x01\x01");
 }
 
 /*
@@ -242,40 +195,35 @@ void	write_test(int fd, char *str, int len)
 int	run_write_test(void)
 {
 	int fd;
-	char *str1;
-	// char *str2;
-	char *str3;
-	// char *str4;
-	char *str5;
-	// char *str6;
-	// char *str7;
-	// char *str8;
-	// char *str9;
-	// char *str10;
+	char *str1 = "Boston marathon";
+	char *str2 = "01001abcd\t\t\0123";
+	char *str3 = "\0";
 
-	str1 = "Boston marathon";
-	// str2 = "Boston marathon";
-	str3 = "01001abcd\t\t\0123";
-	// str4 = "01001abcd\t\t\0123";
-	str5 = "\0";
-	// str6 = "\0";
-	// str7 = "";
-	// str8 = "";
-	// str9 = "Hola pirinola\0buenaaassssss0";
-	// str10 = "Hola pirinola";
-
-	fd = open("test.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	fd = open("testing.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fd < 0)
 		return (-1);
 	printf("" BLUE "\n************ FT_WRITE **********" RESET "\n\n");
 	printf("" CYAN "--------- Test 1 --------" RESET "\n");
 	write_test(1, str1, strlen(str1));
 	printf("" CYAN "--------- Test 2 --------" RESET "\n");
-	write_test(1, str3, strlen(str3));
+	write_test(1, str2, strlen(str2));
 	printf("" CYAN "--------- Test 3 --------" RESET "\n");
-	write_test(1, str5, strlen(str5));
+	write_test(1, str3, strlen(str3));
 	printf("" CYAN "--------- Test 4 --------" RESET "\n");
 	write_test(50, str1, strlen(str1));
+	printf("" CYAN "--------- Test 5 --------" RESET "\n");
+	write_test(-1, "text", 4);
+	errno = 0;
+	printf("" CYAN "--------- Test 6 --------" RESET "\n");
+	write_test(fd, "", 0);
+	printf("" CYAN "--------- Test 7 --------" RESET "\n");
+	write_test(fd, "Hola pirinola", 13);
+	printf("" CYAN "--------- Test 8 --------" RESET "\n");
+	write_test(fd, "Hola pirinola", 50);
+	printf("" CYAN "--------- Test 9 --------" RESET "\n");
+	write_test(fd, "Hola pirinola", 5);
+	printf("" CYAN "--------- Test 10 --------" RESET "\n");
+	write_test(fd, "Hola pirinola", -10);
 	close(fd);
 	return(0);
 }
@@ -376,13 +324,13 @@ void	run_read_test(void)
 		printf("" RED "ERROR: check function ft_read again" RESET "\n\n");
 	errno = 0;
 	printf("" CYAN "--------- Test 2 --------" RESET "\n");
-	read_test("test.txt", 0);
+	read_test("testing.txt", 0);
 	printf("" CYAN "--------- Test 3 --------" RESET "\n");
 	read_test("libasm.h", 20);
 	printf("" CYAN "--------- Test 4 --------" RESET "\n");
-	read_test("test.txt", 99);
+	read_test("testing.txt", 99);
 	printf("" CYAN "--------- Test 5 --------" RESET "\n");
-	read_test("test.txt", -5);
+	read_test("testing.txt", -5);
 	errno = 0;
 	printf("" CYAN "--------- Test 6 --------" RESET "\n");
 	read_test("whatever", 15);
@@ -427,40 +375,23 @@ void	strdup_test(char *str)
 
 void	run_strdup_test(void)
 {
-	char *str1;
-	char *str2;
-	char *str3;
-	char *str4;
-	char *str5;
-	char *str6;
-	char *str7;
-	char *str8;
-
-	str1 = "Boston marathon";
-	str2 = "\n";
-	str3 = "01001abcd\t\t\0123";
-	str4 = "Boston marathon";
-	str5 = "\0";
-	str6 = "";
-	str7 = "0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefA";
-	str8 = "01\0buenaaassssss0";
 	printf("" PURPLE "\n************ FT_STRDUP **********" RESET "\n\n");
 	printf("" CYAN "--------- Test 1 --------" RESET "\n");
-	strdup_test(str1);
+	strdup_test("Boston marathon");
 	printf("" CYAN "--------- Test 2 --------" RESET "\n");
-	strdup_test(str2);
+	strdup_test("\n");
 	printf("" CYAN "--------- Test 3 --------" RESET "\n");
-	strdup_test(str3);
+	strdup_test("01001abcd\t\t\0123");
 	printf("" CYAN "--------- Test 4 --------" RESET "\n");
-	strdup_test(str4);
+	strdup_test("Boston marathon");
 	printf("" CYAN "--------- Test 5 --------" RESET "\n");
-	strdup_test(str5);
+	strdup_test("\0");
 	printf("" CYAN "--------- Test 6 --------" RESET "\n");
-	strdup_test(str6);
+	strdup_test("");
 	printf("" CYAN "--------- Test 7 --------" RESET "\n");
-	strdup_test(str7);
+	strdup_test("0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefA");
 	printf("" CYAN "--------- Test 8 --------" RESET "\n");
-	strdup_test(str8);
+	strdup_test("01\0buenaaassssss0");
 }
 
 int	main(void)
@@ -471,10 +402,5 @@ int	main(void)
 	run_write_test();
 	run_read_test();
 	run_strdup_test();
-
-	// int a =	strcmp("\xff\xff", "\xff");
-	// int b = ft_strcmp ("\xff\xff", "\xff");
-	// printf("valor real es: %d\n",a );
-	// printf("valor propio es: %d\n", b);
-    return(0);
+	return(0);
 }
