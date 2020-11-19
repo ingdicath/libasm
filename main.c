@@ -6,7 +6,7 @@
 /*   By: dsalaman <dsalaman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/17 18:43:57 by dsalaman      #+#    #+#                 */
-/*   Updated: 2020/11/18 13:41:01 by dsalaman      ########   odam.nl         */
+/*   Updated: 2020/11/18 22:50:26 by dsalaman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,11 @@ void	strcpy_test(char *str)
 {
 	char *real_str;
 	char *my_str;
-	char dst1[PATH_MAX];
-	char dst2[PATH_MAX];
+	char dst1[BUFFER_SIZE];
+	char dst2[BUFFER_SIZE];
 
-	bzero(dst1, 200);
-	bzero(dst2, 200);
+	bzero(dst1, sizeof(dst1));
+	bzero(dst2, sizeof(dst2));
 	real_str = strcpy(dst1, str);
 	my_str = ft_strcpy(dst2, str);
 	if (*str == '\0')
@@ -286,89 +286,109 @@ int	run_write_test(void)
 **	---------------------------------------------------------------------------
 */
 
-/*void read_test(char *str, size_t len)
+int read_test(char *file, size_t len)
 {
 	int fd;
 	int real;
 	int own;
 	int error1;
 	int error2;
-	char buf1[200];
-	char buf2[200];
+	char buf1[100];
+	char buf2[100];
 
 	bzero(buf1, sizeof(buf1));
 	bzero(buf2, sizeof(buf2));
-	fd = open(fd, O_RDONLY);
+	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		return (-1);
 	real = read(fd, buf1, len);
 	error1 = errno;
-	own = ft_read(fd, buf2, len);
-	error2 = errno;
 	if (*buf1 == '\0')
 	{
-		printf("String is: \t|'\\0'|\nread: \t\t|%d|\nft_read: \t|%d|\n\n", real, own);
-		printf("Errno is: \nread: \t\t|%d|\nft_read: \t|%d|\n\n", error1, error2);
+		printf("String read is: \t|'\\0'|\n");
+		printf("Errno read is: \t\t|%d|\n\n", error1);
 	}
 	else
 	{
-		printf("String is: \t|%s|\nread: \t\t|%d|\nft_read: \t|%d|\n\n", buf1, real, own);
-		printf("Errno is: \nread: \t\t|%d|\nft_read: \t|%d|\n\n", error1, error2);
+		printf("String read is: \t|%s|\nread size: \t\t|%d|\n", buf1, real);
+		printf("Errno read is: \t\t|%d|\n\n", error1);
 	}
+	close(fd);
+	fd = open(file, O_RDONLY);
+	own = ft_read(fd, buf2, len);
+	error2 = errno;
 	if (*buf2 == '\0')
 	{
-		printf("String is: \t|'\\0'|\nread: \t\t|%d|\nft_read: \t|%d|\n\n", real, own);
-		printf("Errno is: \nread: \t\t|%d|\nft_read: \t|%d|\n\n", error1, error2);
+		printf("String ft_read is: \t|'\\0'|\n");
+		printf("Errno ft_read is: \t|%d|\n\n", error2);
 	}
 	else
 	{
-		printf("String is: \t|%s|\nread: \t\t|%d|\nft_read: \t|%d|\n\n", buf2, real, own);
-		printf("Errno is: \nread: \t\t|%d|\nft_read: \t|%d|\n\n", error1, error2);
+		printf("String ft_read is: \t|%s|\nft_read size: \t\t|%d|\n", buf2, own);
+		printf("Errno ft_read is: \t|%d|\n\n", error2);
 	}
+	close(fd);
 	if (real == own)
 		printf("" GREEN "Function ft_read is OK" RESET "\n\n");
 	else
 		printf("" RED "ERROR: check function ft_read again" RESET "\n\n");
 	close(fd);
+	return (0);
 }
 
 void	run_read_test(void)
 {
-	char *str1;
-	char *str2;
-	char *str3;
-	char *str4;
-	char *str5;
-	char *str6;
-	char *str7;
-	char *str8;
-	char *str9;
-	char *str10;
-
-	str1 = "Boston marathon";
-	str2 = "Boston marathon";
-	str3 = "01001abcd\t\t\0123";
-	str4 = "01001abcd\t\t\0123";
-	str5 = "\0";
-	str6 = "\0";
-	str7 = "";
-	str8 = "";
-	str9 = "Hola pirinola\0buenaaassssss0";
-	str10 = "Hola pirinola";
-	// char buf1[200];
-	// char buf2[200];
+	int real;
+	int own;
+	char buf1[100];
+	char buf2[100];
+	
+	bzero(buf1, sizeof(buf1));
+	bzero(buf2, sizeof(buf2));
 
 	printf("" BLUE "\n************ FT_READ **********" RESET "\n\n");
 	printf("" CYAN "--------- Test 1 --------" RESET "\n");
-	read_test(str1, strlen(str1));
+	real = read(42, buf1, 20);
+	if (*buf1 == '\0')
+	{
+		printf("String read is: \t|'\\0'|\n");
+		printf("Errno read is: \t\t|%d|\n\n", errno);
+	}
+	else
+	{
+		printf("String ft_read is: \t|%s|\nread size: \t\t|%d|\n", buf1, real);
+		printf("Errno read is: \t\t|%d|\n\n", errno);
+	}
+	own = ft_read(42, buf2, 20);
+	if (*buf2 == '\0')
+	{
+		printf("String ft_read is: \t|'\\0'|\n");
+		printf("Errno ft_read: \t\t|%d|\n\n", errno);
+	}
+	else
+	{
+		printf("String ft_read is: \t|%s|\nft_read size: \t\t|%d|\n", buf2, own);
+		printf("Errno ft_read is: : \t\t|%d|\n\n", errno);
+	}
+	if (real == own)
+		printf("" GREEN "Function ft_read is OK" RESET "\n\n");
+	else
+		printf("" RED "ERROR: check function ft_read again" RESET "\n\n");
+	errno = 0;
 	printf("" CYAN "--------- Test 2 --------" RESET "\n");
-	read_test(str3, strlen(str3));
+	read_test("test.txt", 0);
 	printf("" CYAN "--------- Test 3 --------" RESET "\n");
-	read_test(1, str5, strlen(str5));
+	read_test("libasm.h", 20);
 	printf("" CYAN "--------- Test 4 --------" RESET "\n");
-	read_test(50, str1, strlen(str1));
-
-}*/
+	read_test("test.txt", 99);
+	printf("" CYAN "--------- Test 5 --------" RESET "\n");
+	read_test("test.txt", -5);
+	errno = 0;
+	printf("" CYAN "--------- Test 6 --------" RESET "\n");
+	read_test("whatever", 15);
+	printf("" CYAN "--------- Test 7 --------" RESET "\n");
+	read_test("empty.txt", 15);
+}
 
 /*
 **	---------------------------------------------------------------------------
@@ -449,7 +469,12 @@ int	main(void)
 	run_strcpy_test();
 	run_strcmp_test();
 	run_write_test();
-	// run_read_test();
+	run_read_test();
 	run_strdup_test();
+
+	// int a =	strcmp("\xff\xff", "\xff");
+	// int b = ft_strcmp ("\xff\xff", "\xff");
+	// printf("valor real es: %d\n",a );
+	// printf("valor propio es: %d\n", b);
     return(0);
 }
