@@ -6,13 +6,13 @@
 ;    By: dsalaman <dsalaman@student.codam.nl>         +#+                      ;
 ;                                                    +#+                       ;
 ;    Created: 2020/11/06 15:39:30 by dsalaman      #+#    #+#                  ;
-;    Updated: 2020/11/17 16:20:43 by dsalaman      ########   odam.nl          ;
+;    Updated: 2020/11/23 16:12:57 by dsalaman      ########   odam.nl          ;
 ;                                                                              ;
 ; **************************************************************************** ;
 
-; DESCRIPTION: copy the string src(rsi) to dst(rdi) (including the terminating `\0' character).
+; DESCRIPTION: copy the string src(rsi) to dst(rdi) (including the terminating '\0' character).
 ;
-; SYNOPSIS:  char *stpcpy(char *dst, const char *src)
+; SYNOPSIS: char *stpcpy(char *dst, const char *src)
 ;
 ; RETURN: a pointer to the terminating `\0' character of dst
 
