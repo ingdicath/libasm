@@ -6,7 +6,7 @@
 /*   By: dsalaman <dsalaman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/17 18:43:57 by dsalaman      #+#    #+#                 */
-/*   Updated: 2020/11/19 23:11:23 by dsalaman      ########   odam.nl         */
+/*   Updated: 2020/12/11 17:18:30 by dsalaman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,7 +248,12 @@ int read_test(char *file, size_t len)
 	bzero(buf2, sizeof(buf2));
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
+	{
+		error1 = errno;
+		printf("Error: No such file or directory\n");
+		printf("Errno read is: \t\t|%d|\n\n", error1);
 		return (-1);
+	}
 	real = read(fd, buf1, len);
 	error1 = errno;
 	if (*buf1 == '\0')
@@ -296,7 +301,7 @@ void	run_read_test(void)
 
 	printf("" BLUE "\n************ FT_READ **********" RESET "\n\n");
 	printf("" CYAN "--------- Test 1 --------" RESET "\n");
-	real = read(42, buf1, 20);
+	real = read(-54, buf1, 20);
 	if (*buf1 == '\0')
 	{
 		printf("String read is: \t|'\\0'|\n");
@@ -307,7 +312,7 @@ void	run_read_test(void)
 		printf("String ft_read is: \t|%s|\nread size: \t\t|%d|\n", buf1, real);
 		printf("Errno read is: \t\t|%d|\n\n", errno);
 	}
-	own = ft_read(42, buf2, 20);
+	own = ft_read(-54, buf2, 20);
 	if (*buf2 == '\0')
 	{
 		printf("String ft_read is: \t|'\\0'|\n");
@@ -324,16 +329,20 @@ void	run_read_test(void)
 		printf("" RED "ERROR: check function ft_read again" RESET "\n\n");
 	errno = 0;
 	printf("" CYAN "--------- Test 2 --------" RESET "\n");
-	read_test("testing.txt", 0);
+	read_test("dark.txt", 0);
+	errno = 0;
 	printf("" CYAN "--------- Test 3 --------" RESET "\n");
 	read_test("libasm.h", 20);
+	errno = 0;
 	printf("" CYAN "--------- Test 4 --------" RESET "\n");
-	read_test("testing.txt", 99);
+	read_test("dark.txt", 99);
+	errno = 0;
 	printf("" CYAN "--------- Test 5 --------" RESET "\n");
-	read_test("testing.txt", -5);
+	read_test("dark.txt", -5);
 	errno = 0;
 	printf("" CYAN "--------- Test 6 --------" RESET "\n");
 	read_test("whatever", 15);
+	errno = 0;
 	printf("" CYAN "--------- Test 7 --------" RESET "\n");
 	read_test("empty.txt", 15);
 }
