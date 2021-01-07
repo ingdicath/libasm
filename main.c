@@ -6,7 +6,7 @@
 /*   By: dsalaman <dsalaman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/17 18:43:57 by dsalaman      #+#    #+#                 */
-/*   Updated: 2020/12/11 17:18:30 by dsalaman      ########   odam.nl         */
+/*   Updated: 2021/01/07 12:31:50 by dsalaman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,6 +211,7 @@ int	run_write_test(void)
 	write_test(1, str3, strlen(str3));
 	printf("" CYAN "--------- Test 4 --------" RESET "\n");
 	write_test(50, str1, strlen(str1));
+	errno = 0;
 	printf("" CYAN "--------- Test 5 --------" RESET "\n");
 	write_test(-1, "text", 4);
 	errno = 0;
@@ -254,6 +255,7 @@ int read_test(char *file, size_t len)
 		printf("Errno read is: \t\t|%d|\n\n", error1);
 		return (-1);
 	}
+	errno = 0;
 	real = read(fd, buf1, len);
 	error1 = errno;
 	if (*buf1 == '\0')
@@ -295,10 +297,9 @@ void	run_read_test(void)
 	int own;
 	char buf1[100];
 	char buf2[100];
-	
+
 	bzero(buf1, sizeof(buf1));
 	bzero(buf2, sizeof(buf2));
-
 	printf("" BLUE "\n************ FT_READ **********" RESET "\n\n");
 	printf("" CYAN "--------- Test 1 --------" RESET "\n");
 	real = read(-54, buf1, 20);
@@ -327,22 +328,16 @@ void	run_read_test(void)
 		printf("" GREEN "Function ft_read is OK" RESET "\n\n");
 	else
 		printf("" RED "ERROR: check function ft_read again" RESET "\n\n");
-	errno = 0;
 	printf("" CYAN "--------- Test 2 --------" RESET "\n");
 	read_test("dark.txt", 0);
-	errno = 0;
 	printf("" CYAN "--------- Test 3 --------" RESET "\n");
 	read_test("libasm.h", 20);
-	errno = 0;
 	printf("" CYAN "--------- Test 4 --------" RESET "\n");
 	read_test("dark.txt", 99);
-	errno = 0;
 	printf("" CYAN "--------- Test 5 --------" RESET "\n");
 	read_test("dark.txt", -5);
-	errno = 0;
 	printf("" CYAN "--------- Test 6 --------" RESET "\n");
 	read_test("whatever", 15);
-	errno = 0;
 	printf("" CYAN "--------- Test 7 --------" RESET "\n");
 	read_test("empty.txt", 15);
 }
@@ -388,11 +383,11 @@ void	run_strdup_test(void)
 	printf("" CYAN "--------- Test 1 --------" RESET "\n");
 	strdup_test("Boston marathon");
 	printf("" CYAN "--------- Test 2 --------" RESET "\n");
-	strdup_test("\n");
-	printf("" CYAN "--------- Test 3 --------" RESET "\n");
 	strdup_test("01001abcd\t\t\0123");
+	printf("" CYAN "--------- Test 3 --------" RESET "\n");
+	strdup_test("01\0buenaaassssss0");
 	printf("" CYAN "--------- Test 4 --------" RESET "\n");
-	strdup_test("Boston marathon");
+	strdup_test("\n");
 	printf("" CYAN "--------- Test 5 --------" RESET "\n");
 	strdup_test("\0");
 	printf("" CYAN "--------- Test 6 --------" RESET "\n");
@@ -400,7 +395,7 @@ void	run_strdup_test(void)
 	printf("" CYAN "--------- Test 7 --------" RESET "\n");
 	strdup_test("0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefABCDEF0123456789abcdefA");
 	printf("" CYAN "--------- Test 8 --------" RESET "\n");
-	strdup_test("01\0buenaaassssss0");
+	strdup_test("1234567890qwertyuiop[]");
 }
 
 int	main(void)
