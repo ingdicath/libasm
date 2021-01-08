@@ -6,7 +6,7 @@
 /*   By: dsalaman <dsalaman@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/17 18:43:57 by dsalaman      #+#    #+#                 */
-/*   Updated: 2021/01/07 12:31:50 by dsalaman      ########   odam.nl         */
+/*   Updated: 2021/01/08 16:22:33 by dsalaman      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,6 +270,7 @@ int read_test(char *file, size_t len)
 	}
 	close(fd);
 	fd = open(file, O_RDONLY);
+	errno = 0;
 	own = ft_read(fd, buf2, len);
 	error2 = errno;
 	if (*buf2 == '\0')
@@ -355,6 +356,7 @@ void	strdup_test(char *str)
 	int error1;
 	int error2;
 
+	errno = 0;
 	real_dup = strdup(str);
 	error1 = errno;
 	my_dup = ft_strdup(str);
